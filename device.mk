@@ -135,6 +135,9 @@ PRODUCT_PACKAGES += \
     android.hardware.gatekeeper@1.0-impl \
     android.hardware.gatekeeper@1.0-service
 
+# Enable DM file pre-opting to reduce first boot time
+PRODUCT_DEX_PREOPT_GENERATE_DM_FILES := true
+
 # Health
 PRODUCT_PACKAGES += \
     android.hardware.health-service.mediatek \
