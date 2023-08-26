@@ -15,6 +15,10 @@ ro.vendor.mtk_nn_quant_preferred=1
 ro.vendor.mtk_nn_support=1
 ro.vendor.mtk_nn_baseline_support=1
 
+# ART 
+dalvik.vm.dex2oat-minidebuginfo=false
+dalvik.vm.minidebuginfo=false
+
 # Audio
 ro.audio.monitorRotation=true
 ro.config.vc_call_vol_steps=11
