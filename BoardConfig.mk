@@ -131,9 +131,6 @@ TARGET_COPY_OUT_SYSTEM_EXT := system_ext
 
 BOARD_USES_METADATA_PARTITION := true
 
-# Platform
-BOARD_HAS_MTK_HARDWARE := true
-
 # Properties
 TARGET_SYSTEM_PROP += $(DEVICE_PATH)/system.prop
 TARGET_PRODUCT_PROP += $(DEVICE_PATH)/product.prop
