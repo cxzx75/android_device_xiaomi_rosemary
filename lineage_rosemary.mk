@@ -32,3 +32,8 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
     SystemName=$(PRODUCT_SYSTEM_NAME) \
     ProductModel=$(PRODUCT_SYSTEM_DEVICE) \
     DeviceProduct=$(PRODUCT_SYSTEM_NAME)
+
+#EvoX flags
+WITH_GMS := false
+TARGET_HAS_UDFPS := false
+TARGET_INCLUDE_ACCORD := false
