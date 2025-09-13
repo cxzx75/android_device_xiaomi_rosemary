@@ -133,6 +133,8 @@ ro.vendor.mtk_ultra_dimming_support=1
 persist.vendor.max.brightness=500
 ro.vendor.colorpick_adjust=true
 ro.vendor.cabc.enable=true
+debug.hwui.skia_tracing_enabled=false
+debug.hwui.skia_use_perfetto_track_events=false
 
 # Fingerprint
 persist.vendor.fingerprint.type=side
