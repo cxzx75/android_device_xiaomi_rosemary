@@ -270,6 +270,7 @@ debug.sf.high_fps_late_sf_phase_offset_ns=-12666667
 ro.surface_flinger.vsync_event_phase_offset_ns=8400000
 ro.surface_flinger.vsync_sf_event_phase_offset_ns=-10933333
 ro.sf.blurs_are_expensive=1
+debug.sf.enable_egl_image_tracker=0
 debug.sf.enable_transaction_tracing=false
 debug.sf.enable_gl_backpressure=1
 debug.sf.predict_hwc_composition_strategy=0
