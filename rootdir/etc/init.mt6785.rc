@@ -1170,11 +1170,6 @@ service mi_thermald /vendor/bin/mi_thermald
 on property:sys.boot_completed=1
     restart android-hardware-media-c2-hal-1-2
 
-# FPSGO FBT Game
-on boot
-    insmod /vendor/lib/modules/fpsgo.ko
-	insmod /vendor/lib/modules/mi_memory.ko
-
 # add this link for cust mount
 on init
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
