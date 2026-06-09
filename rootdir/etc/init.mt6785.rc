@@ -292,7 +292,6 @@ on post-fs-data
     chown system system /dev/spm
 
 # GPS
-    chmod 0775 /vendor/xbin/MPED
     chmod 0666 /dev/gps_emi
 
 # -----------------------
@@ -495,10 +494,6 @@ on post-fs-data
 
     chmod 0660 /dev/sw_sync
     chown system graphics /dev/sw_sync
-
-    # EM baseband file
-    chown root diag /vendor/bin/baseband_regdump
-    chmod 4750 /vendor/bin/baseband_regdump
 
     #pmu
     chown root radio /sys/devices/platform/mt-pmic/pmic_access_bank0
@@ -968,14 +963,6 @@ service meta_tst /vendor/bin/meta_tst
     disabled
     oneshot
 
-service factory_no_image /vendor/bin/factory
-    user root
-    group radio system wifi media gps audio bluetooth wakelock nfc
-    capabilities BLOCK_SUSPEND NET_RAW NET_ADMIN SYS_ADMIN SYS_BOOT
-    socket factory-atci stream 660 radio system
-    disabled
-    oneshot	
-
 # start meta_tst for ATM
 on property:sys.boot_completed=1 && property:ro.boot.atm=enable
     start meta_tst
@@ -1003,27 +990,6 @@ on property:sys.boot_completed=1
 # add this link for cust mount
 on init
     symlink /dev/block/platform/bootdevice /dev/block/bootdevice
-
-# Ultrasound SQT test
-service ellipticEngineRecord /system/bin/elliptic_engine_record -s /dev/elliptic1:device -f binpayload -p /sdcard/elliptic/
-    class main
-    user root
-    oneshot
-    disabled
-on  property:vendor.elliptic.engine.record=1
-    start ellipticEngineRecord
-on  property:vendor.elliptic.engine.record=0
-    stop ellipticEngineRecord
-
-service ellipticSensorTest /system/bin/elliptic_sensor_test
-    class main
-    user root
-    oneshot
-    disabled
-on  property:vendor.elliptic.sensor.test=1
-    start ellipticSensorTest
-on  property:vendor.elliptic.sensor.test=0
-    stop ellipticSensorTest
 
 on property:sys.boot_completed="" && property:persist.radio.op.name=AT && property:persist.vendor.op.name.last=UN
    setprop persist.vendor.op.name.last "AT"
