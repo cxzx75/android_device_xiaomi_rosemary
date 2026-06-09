@@ -14,9 +14,6 @@ import init.mishow.ctl.rc
 import /vendor/etc/init/hw/init.modem.rc
 
 on init
-    # if primary storage is physical, set ro.vold.primary_physical to 1
-    # setprop ro.vold.primary_physical 1
-
     # M306 Add for sensor calibration command in 20201124 start
     mkdir /mnt/vendor/persist 0771 system system
     mkdir /mnt/vendor/rescue 0771 system system
@@ -328,14 +325,9 @@ on post-fs-data
     chmod 444 /etc/radvd/radvd.conf
 
     # Mali 3D GPU driver
-    #insmod /vendor/lib/modules/mali.ko
     chmod 666 /dev/mali0
-    #chown system graphics /dev/mali
-
-
 
     # Touch Panel
-    # chmod 0664 /dev/touch
     chown root diag /sys/module/tpd_setting/parameters/tpd_calmat
     chown root diag /sys/module/tpd_setting/parameters/tpd_em_debounce_time
     chown root diag /sys/module/tpd_setting/parameters/tpd_mode
@@ -363,10 +355,7 @@ on post-fs-data
     chown system system /sys/class/power_supply/battery/input_suspend
 	
     # M4U
-    #insmod /vendor/lib/modules/m4u.ko
-    #mknod /dev/M4U_device c 188 0
     chmod 0444 /dev/m4u
-    #chown system media /dev/M4U_device
     chmod 0640 /proc/m4u
     chown system media /proc/m4u
 
@@ -424,8 +413,6 @@ on post-fs-data
     mkdir /data/vendor/vcodec/out 0770 media system
 
     #MJC
-    #insmod /vendor/lib/modules/mjc_kernel_driver.ko
-    #mknod /dev/MJC c 168 0
     chmod 0660 /dev/MJC
     chown media system /dev/MJC
 
@@ -569,9 +556,6 @@ on post-fs-data
 
     #FM
     chmod 0777 /sys/class/fm/fm/lan_enable
-
-    # JPEG
-    #chmod 0444 /dev/mtk_jpeg
 
     # almk
     chmod 0440 /dev/mtk_almk
@@ -955,40 +939,6 @@ on boot
 # initialize powerHAL when boot is completed
 on property:sys.boot_completed=1
     setprop vendor.mediatek.powerhal.init 1
-
-#service dpfd /vendor/bin/dpfd
-#	user root
-#	group system media
-
-#
-#  External Modme control related services
-#
-
-#
-#  Modem related services (Begin)
-#
-##Add by T.Zh for ppp daemon
-#service pppd /system/bin/pppd file /data/misc/ppp/ppp_options
-#    user root
-#    disabled
-#    oneshot
-#
-##
-#
-#  Modem related services (End)
-#
-
-#add for power-off alarm
-#service poad /vendor/bin/poad
-#    class main
-#    user system
-#    group system
-#    oneshot
-
-#service BGW /vendor/xbin/BGW
-#	user system
-#	group gps system radio
-#	class main
 
 # Battery info
 on property:persist.vendor.mediatek.fg.disable=1
